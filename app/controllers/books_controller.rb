@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     if @book.reviews.blank?
       @average_review = 0
     else
-      @average_review = @book.reviews.average(:rating).round(2)
+      @average_review = @book.reviews.average(:rate).round(2)
     end
   end
 
@@ -32,14 +32,10 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.save
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 
@@ -48,11 +44,9 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { render :show, status: :ok, location: @book }
+        redirect_to book_path(@book)
       else
-        format.html { render :edit }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+        render 'edit'
       end
     end
   end
@@ -61,10 +55,7 @@ class BooksController < ApplicationController
   # DELETE /books/1.json
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to root_path
   end
 
   private
@@ -75,6 +66,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :description, :author, :user_id)
+      params.require(:book).permit(:title, :description, :author, :user_id, :thumbnail)
     end
 end
