@@ -4,9 +4,10 @@
 // that code so it'll be compiled.
 
 import 'jquery/dist/jquery.slim'
-import 'raty-js'
 import 'popper.js/dist/popper'
-import 'bootstrap'
+import 'bootstrap/dist/js/bootstrap'
+import '../css/application.css'
+import 'raty-js'
 
 require("@rails/ujs").start()
 require("turbolinks").start()

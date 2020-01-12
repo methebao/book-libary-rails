@@ -1,5 +1,5 @@
 @import "bootstrap";
-
+@import "tailwindcss/tailwind.css";
 .img-wrap{
     position: relative;
     padding-top: 120%;
@@ -19,6 +19,20 @@
             max-height: 100%;
             width: auto;
         }
+    }
+}
+
+.new-review, .edit-review, .new-book, .edit-book {
+    h1 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+    &__form {
+      label {
+          display: block;
+          margin-right: 15px;
+      }
     }
 }
 
@@ -43,6 +57,7 @@
         margin-top: 20px;
     }
 }
+
 .rating-box {
     display: flex;
     align-items: center;
@@ -61,18 +76,5 @@
     &__user {
         font-size: 12px;
         color: lightgrey;
-    }
-}
-.new-review, .edit-review, .new-book, .edit-book {
-    h1 {
-        font-size: 20px;
-        font-weight: 500;
-        margin-bottom: 30px;
-    }
-    &__form {
-      label {
-          display: block;
-          margin-right: 15px;
-      }
     }
 }

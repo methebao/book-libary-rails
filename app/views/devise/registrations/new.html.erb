@@ -20,27 +20,21 @@
       <%= f.email_field :email, autocomplete: "email", class:"input" %>
     </div>
 
-    <div class="mb-6">
-      <div class="flex">
-        <%= f.label :password, class: "label" %>
-        <% if @minimum_password_length %>
-        <span class="text-xs pl-1 text-grey-dark"><em>(<%= @minimum_password_length %> characters minimum)</em></span>
-        <% end %>
-      </div>
-      <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+    <%= form_group_for f, :title, label: false  do %>
+      <label>Password: </label>
+      <%= f.password_field :password, autocomplete: "new-password", class:"input", :required => true %>
+      <p class="text-sm text-grey-dark pt-1 italic"> <% if @minimum_password_length %>
+        <%= @minimum_password_length %> characters minimum <% end %> (leave blank if you don't want to change it) </p>
+    <% end %>  
+     <%= form_group_for f, :password_confirmation, label: false  do %>
+      <label>Confirm your password : </label>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", :required => true %>
+    <% end %>  
+
+
+    <div class="mt-4">
+      <%= f.submit "Sign up", class: "btn btn-dark" %>
     </div>
-
-    <div class="mb-6">
-      <%= f.label :password_confirmation, class:"label" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
-    </div>
-
-    <div class="mb-6">
-      <%= f.submit "Sign up", class: "btn btn-default" %>
-    </div>
-
-    <hr class="border mt-6" />
-
   <% end %>
 
   <%= render "devise/shared/links" %>

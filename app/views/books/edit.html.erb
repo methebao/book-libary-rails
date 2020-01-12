@@ -2,9 +2,11 @@
   <div class="edit-book">
     <h1>Edit Book</h1>
     <%= form_for @book, :html => { :multipart => true } do |f| %>
-      <%= f.file_field :thumbnail %><br>
-      <label>Title: </label>
-      <%= f.text_field :title, class: 'form-control' %><br>
+      <%= f.file_field :thumbnail, :required => true %><br>
+      <%= form_group_for f, :title, label: false  do %>
+        <label>Title: </label>
+        <%= f.file_field :title, :required => true %>
+      <% end %>  
       <label>Description: </label>
       <%= f.text_field :description, class: 'form-control' %><br>
       <label>Author: </label>

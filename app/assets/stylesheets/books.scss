@@ -1,3 +1,24 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.book-details {
+    color: darkslategray;
+    font-size: 16px;
+    &__title {
+        font-size: 23px;
+        font-weight: 500;
+        color: black;
+        text-transform: uppercase;
+    }
+    &__author {
+        font-size: 13px;
+        color: gray;
+        span {
+            color: gray;
+        }
+    }
+    &__description {
+        display: block;
+        margin-top: 20px;
+    }
+}

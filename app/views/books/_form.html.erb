@@ -1,12 +1,19 @@
 <%= form_for @book, :html => { :multipart => true } do |f| %>
-  <div>
-    <%= f.file_field :thumbnail %>
-  </div>
-  <label>Title: </label>
-  <%= f.text_field :title, class: 'form-control' %>
-  <label>Description: </label>
-  <%= f.text_field :description, class: 'form-control' %>
-  <label>Author: </label>
-  <%= f.text_field :author, class: 'form-control' %>
+  <%= form_group_for f, :thumbnail, label: false  do %>
+    <label>Upload an thumbnail: </label>
+    <%= f.file_field :thumbnail, :required => true%>
+  <% end %>   
+  <%= form_group_for f, :title, label: false  do %>
+      <label>Title: </label>
+      <%= f.text_field :title, class: 'form-control', placeholder: 'Type your book name', :required => true %>
+  <% end %>   
+   <%= form_group_for f, :description, label: false  do %>
+      <label>Description: </label>
+      <%= f.text_field :description, class: 'form-control', placeholder: 'What\'s book about ?', :required => true %>
+  <% end %>  
+   <%= form_group_for f, :author, label: false  do %>
+      <label>Author: </label>
+      <%= f.text_field :author, class: 'form-control', placeholder: 'Who wrote this book ?', :required => true %>
+  <% end %>                 
   <%= f.button :submit, class: "btn btn-dark mt-5" %>
 <% end %>
