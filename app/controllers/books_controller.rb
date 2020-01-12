@@ -42,14 +42,13 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        redirect_to book_path(@book)
-      else
-        render 'edit'
-      end
+    if @book.update(book_params)
+      redirect_to book_path(@book)
+    else
+      render 'edit'
     end
   end
+  
 
   # DELETE /books/1
   # DELETE /books/1.json

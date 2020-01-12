@@ -5,6 +5,9 @@
 
 import 'jquery/dist/jquery.slim'
 import 'raty-js'
+import 'popper.js/dist/popper'
+import 'bootstrap'
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()

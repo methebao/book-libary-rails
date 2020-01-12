@@ -4,15 +4,36 @@
 <% else %>
   <div class="row">
     <% @books.each do |book| %>
-      <div class="col-md-3">
-        <a href="/books/<%= book.id %>">
-          <% if book.thumbnail.attached? %>
-            <%= image_tag(book.thumbnail, class: "img-thumbnail")  %>
-          <% end %>
-        </a>
-         <a href="/books/<%= book.id %>">
-          <h2><%= book.title %></h2>
-        </a>
+      <div class="col-md-4">
+        <div class="card"> 
+          <a href="/books/<%= book.id %>">
+            <% if book.thumbnail.attached? %>
+              <div class="img-wrap">
+                <div class="img-content">
+                  <%= image_tag(book.thumbnail) %>
+                </div>
+              </div>
+            <% end %>
+          </a>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="/books/<%= book.id %>">
+                  <h2 class="card-title"><%= book.title %></h2>
+                </a>
+              </li>
+              <li class="list-group-item text-secondary">
+                <strong> Desc: </strong>
+                <%= book.description %>
+              </li>
+              <li class="list-group-item text-secondary">
+                <strong> Author: </strong>
+                <%= book.author %>
+              </li>
+            </ul>
+        </div>
+      </div>
+         
       </div>
     <% end %>
   </div>

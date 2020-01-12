@@ -1,9 +1,11 @@
 <%= form_for([@book, @book.reviews.build]) do |f| %>
-  <div id="rating-form">
-    <label>Rating</label>
+  <div id="rating-form" class='new-review__form average-review-rating rating-box'>
+    <label>Rating: </label>   
   </div>
-  <%= f.text_field :description %>
-  <%= f.button :submit, class: "btn-custom2" %>
+   <label>Comment: </label>
+    <%= f.text_field :description, class: 'form-control' %>
+    <%= f.button :Submit, class: "btn btn-dark mt-5" %>
+
 <% end %>
 
 <script>

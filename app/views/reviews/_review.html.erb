@@ -1,12 +1,13 @@
-<div class="review">
-  <div class="review-rating" data-score="<%= review.rate %>"></div>
-  <p class="review-comment"><%= review.description %></p>
+<div class="reviews__review">
+  <div class="average-review-rating rating-box" data-score="<%= review.rate %>"></div>
+  <p class="reviews__description"><%= review.description %></p>
+  <p class="reviews__user"><%= review.user.name %></p>
 
   <% if user_signed_in? %>
     <% if review.user_id == current_user.id %>
-      <div class="links btn-group">  
-        <%= link_to "Edit", edit_book_review_path(review.book, review), class: "btn btn-custom" %>
-        <%= link_to "Delete", book_review_path(review.book, review), class: "btn btn-custom", method: :delete, data: { confirm: "Are you sure?" } %>
+      <div class="links btn-group float-right">  
+        <%= link_to "Edit", edit_book_review_path(review.book, review), class: "btn btn-dark btn-sm" %>
+        <%= link_to "Delete", book_review_path(review.book, review), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     <% end %>
   <% end %>
